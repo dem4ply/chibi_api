@@ -38,9 +38,22 @@ class Chibi_inner_api( Chibi_url ):
         se la pasa a la nueva url
         """
         result = type( self )( self, parent=self, **kw ) + name
-        if self.auth:
-            result += self.auth
+        self._build_url_set_auth( result )
         return result
+
+    def build_from_url( self, url, *args, **kw ):
+        """
+        usa la url de manera absoluta para contrullir la clase inner
+        y le asigna al autentificacion
+        """
+        result = type( self )( url, parent=self, **kw )
+        self._build_url_set_auth( result )
+        return result
+
+    def _build_url_set_auth( self, url ):
+        if self.auth:
+            url += self.auth
+        return url
 
     def get( self, *args, **kw ):
         result = super().get( *args, **kw )

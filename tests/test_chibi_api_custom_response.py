@@ -3,6 +3,7 @@
 import unittest
 from unittest.mock import Mock
 
+from requests.auth import AuthBase
 from chibi_requests import Response
 from vcr_unittest import VCRTestCase
 
@@ -59,6 +60,14 @@ class Test_chibi_inenr_api( unittest.TestCase ):
     def test_when_build_url_should_pass_response( self ):
         url = Chibi_inner_api()._build_url( "some_url", response_class=Mock )
         self.assertIs( url.response_class, Mock )
+
+
+    def test_when_build_from_url_should_pass_response( self ):
+        origin = Chibi_inner_api()
+        origin.auth = AuthBase()
+        url = origin.build_from_url(
+            "http://google.com" )
+        self.assertIs( url.auth, origin.auth )
 
 
 class Test_catalog_url( VCRTestCase ):
