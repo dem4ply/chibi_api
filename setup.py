@@ -8,7 +8,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ 'chibi_hybrid>=1.2.0', 'chibi_requests>=1.2.0' ]
+requirements = [ 'chibi_hybrid>=1.2.0', 'chibi_requests>=1.3.0' ]
 
 setup(
     author="dem4ply",
