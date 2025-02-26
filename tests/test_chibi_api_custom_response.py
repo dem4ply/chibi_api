@@ -63,11 +63,26 @@ class Test_chibi_inenr_api( unittest.TestCase ):
 
 
     def test_when_build_from_url_should_pass_response( self ):
+        url = Chibi_inner_api()._build_url( "some_url", response_class=Mock )
+        self.assertIs( url.response_class, Mock )
+
+    def test_when_build_from_url_should_pass_auth( self ):
         origin = Chibi_inner_api()
         origin.auth = AuthBase()
         url = origin.build_from_url(
             "http://google.com" )
         self.assertIs( url.auth, origin.auth )
+
+    def test_when_build_from_url_should_have_the_url( self ):
+        origin = Chibi_inner_api()
+        origin.auth = AuthBase()
+        url = origin.build_from_url( "http://google.com" )
+        self.assertEqual( "http://google.com", str( url ) )
+
+    def test_when_build_from_url_should_have_the_parent( self ):
+        origin = Chibi_inner_api()
+        url = origin.build_from_url( "http://google.com" )
+        self.assertIs( url.kw.parent, origin )
 
 
 class Test_catalog_url( VCRTestCase ):
