@@ -15,11 +15,8 @@ chibi_api
 
 libreria para hacer clientes de apis rest
 
-
-********
 Ejemplos
-********
-
+--------
 
 .. code-block:: python
 

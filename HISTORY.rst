@@ -5,7 +5,7 @@ History
 0.1.0 ( 2025-02-25 )
 --------------------
 
-* nuava funcion para contruir urls
+* nueva funcion para contruir urls usando el valor absoluto
 
 0.0.3 ( 2025-02-25 )
 --------------------
